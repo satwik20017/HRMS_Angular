@@ -1,0 +1,36 @@
+<h2>Employees</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees">
+            <td>{{ emp.id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.role }}</td>
+            <td>
+                <span [ngSwitch]="emp.status">
+                    <span *ngSwitchCase="'Active'" class="badge bg-success">Active</span>
+                    <span *ngSwitchCase="'On Leave'" class="badge bg-warning text-dark">On Leave</span>
+                    <span *ngSwitchCase="'Resigned'" class="badge bg-danger">Resigned</span>
+                    <span *ngSwitchDefault class="badge bg-secondary">Unknown</span>
+                </span>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-primary" (click)="showDetails = !showDetails">
+                    Toggle Details
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="showDetails" class="alert alert-info mt-3">
+    <strong>Extra Info:</strong> This is some additional employee details.
+</div>
