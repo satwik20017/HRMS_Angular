@@ -1,0 +1,9 @@
+<div class="card text-white mb-3"
+     [ngClass]="colorClass"
+     (click)="onCardClick()"
+     style="cursor: pointer;">
+  <div class="card-body">
+    <h5 class="card-title">{{ title }}</h5>
+    <p class="card-text">Total: {{ value }}</p>
+  </div>
+</div>
