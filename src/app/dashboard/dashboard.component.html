@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-md-4">
-        <app-stats-card title="Employees" [value]="25" colorClass="bg-primary" (cardClicked)="onCardSelected($event)">
+        <app-stats-card title="Employees" [value]="totalEmployees" colorClass="bg-primary" (cardClicked)="onCardSelected($event)">
         </app-stats-card>
     </div>
     <div class="col-md-4">
-        <app-stats-card title="Leaves Today" [value]="5" colorClass="bg-success" (cardClicked)="onCardSelected($event)">
+        <app-stats-card title="Leaves Today" [value]="totalLeaves" colorClass="bg-success" (cardClicked)="onCardSelected($event)">
         </app-stats-card>
     </div>
     <div class="col-md-4">

@@ -1,0 +1,36 @@
+<h2>Apply for Leave</h2>
+<form [formGroup]="leaveForm" (ngSubmit)="applyLeave()">
+  <div class="mb-3">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name">
+    <div class="text-danger" *ngIf="leaveForm.get('name')?.invalid && leaveForm.get('name')?.touched">
+      Name is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label>Start Date</label>
+    <input type="date" class="form-control" formControlName="startDate">
+    <div class="text-danger" *ngIf="leaveForm.get('startDate')?.invalid && leaveForm.get('startDate')?.touched">
+      Start date is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label>End Date</label>
+    <input type="date" class="form-control" formControlName="endDate">
+    <div class="text-danger" *ngIf="leaveForm.get('endDate')?.invalid && leaveForm.get('endDate')?.touched">
+      End date is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label>Reason</label>
+    <textarea class="form-control" formControlName="reason"></textarea>
+    <div class="text-danger" *ngIf="leaveForm.get('reason')?.invalid && leaveForm.get('reason')?.touched">
+      Reason must be at least 5 characters.
+    </div>
+  </div>
+
+  <button class="btn btn-success" type="submit" [disabled]="leaveForm.invalid">Apply</button>
+</form>
