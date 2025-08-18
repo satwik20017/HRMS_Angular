@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(private hrmsService: HrmsService) { }
 
   ngOnInit() {
-    this.totalEmployees = this.hrmsService.getEmployees().length;
+    this.totalEmployees = this.hrmsService.getEmployees();
     this.totalLeaves = this.hrmsService.getLeaves().length;
   }
 
