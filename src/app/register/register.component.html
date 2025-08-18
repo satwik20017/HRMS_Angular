@@ -1,0 +1,42 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center vh-100">
+  <div class="login-card shadow-sm p-4 rounded">
+    <div class="text-center mb-4">
+      <img src="assets/drogon.jpg" alt="HRMS Logo" class="login-logo mb-3">
+      <h3 class="fw-bold">Create Account</h3>
+      <p class="text-muted">Join HRMS Portal</p>
+    </div>
+
+    <!-- <form (ngSubmit)="register()" #registerForm="ngForm"> -->
+      <form>
+      <!-- Full Name -->
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" name="fullname" ngModel required>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" ngModel required>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" ngModel required>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="confirmPassword" ngModel required>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Create Account</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <a routerLink="/login" class="text-decoration-none">Already have an account? Login</a>
+    </div>
+  </div>
+</div>
