@@ -21,7 +21,7 @@ export class LoginComponent {
 
   onLogin() {
     if (!this.email || !this.password) {
-      this.errorMessage = 'Invalid crendentials';
+      this.errorMessage = 'Invalid credentials';
       return
     }
 
@@ -29,12 +29,12 @@ export class LoginComponent {
       .subscribe({
         next: (res) => {
           if (res.success) {
-            console.log("Login success", res);
+            console.log("Login success");
             this.router.navigate(['/dashboard']);
           }
         },
         error: (err) => {
-          this.errorMessage = err.error.message || 'Invalid crendentials';
+          this.errorMessage = err.error.message || 'Invalid credentials';
         }
       })
   }
