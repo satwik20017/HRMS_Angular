@@ -16,7 +16,7 @@ export class LoginComponent {
   errorMessage = '';
 
   year = 2025;
-  
+
   constructor(private router: Router, private authService: AuthService) { }
 
   onLogin() {
@@ -25,13 +25,17 @@ export class LoginComponent {
       return
     }
 
-    this.authService.login({ email: this.email, password: this.password }).subscribe({
-      next: (res) => {
-        this.router.navigate(['/dashboard']);
-      },
-      error: (err) => {
-        this.errorMessage = err.error.message || 'Invalid crendentials';
-      }
-    })
+    this.authService.login({ email: this.email, password: this.password })
+      .subscribe({
+        next: (res) => {
+          if (res.success) {
+            console.log("Login success", res);
+            this.router.navigate(['/dashboard']);
+          }
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message || 'Invalid crendentials';
+        }
+      })
   }
 }
