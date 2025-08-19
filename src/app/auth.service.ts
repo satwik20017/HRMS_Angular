@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000/';
+  private apiUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
   login(credentials: { email: string, password: string }): Observable<any> {
@@ -21,4 +21,9 @@ export class AuthService {
   forgotPassword(data: {email: string, otp: number, password: string}) {
     return this.http.post(`${this.apiUrl}/forgot-password`, data);
   }
+
+  logout() {
+    localStorage.removeItem('token'); // clear session
+  }
+  
 }

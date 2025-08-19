@@ -1,23 +1,27 @@
-<h2>Add Employee</h2>
-<form #empForm="ngForm" (ngSubmit)="addEmployee()">
-  <div class="row">
-    <div class="col-md-4 mb-3">
-      <label>Name</label>
-      <input type="text" class="form-control" name="name" [(ngModel)]="newEmployee.name" required>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label>Role</label>
-      <input type="text" class="form-control" name="role" [(ngModel)]="newEmployee.role" required>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label>Status</label>
-      <select class="form-select" name="status" [(ngModel)]="newEmployee.status" required>
-        <option value="">Select...</option>
-        <option>Active</option>
-        <option>On Leave</option>
-        <option>Resigned</option>
-      </select>
-    </div>
+<div class="form-wrapper d-flex justify-content-center align-items-center mt-4">
+  <div class="form-card p-4 rounded shadow-sm">
+    <h2 class="fw-bold mb-4 text-center">Add Employee</h2>
+    <form #empForm="ngForm" (ngSubmit)="addEmployee()">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="newEmployee.name" placeholder="Enter name" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Role</label>
+          <input type="text" class="form-control" name="role" [(ngModel)]="newEmployee.role" placeholder="Enter role" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Status</label>
+          <select class="form-select" name="status" [(ngModel)]="newEmployee.status" required>
+            <option value="">Select...</option>
+            <option>Active</option>
+            <option>On Leave</option>
+            <option>Resigned</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-primary w-100" type="submit" [disabled]="empForm.invalid">Add Employee</button>
+    </form>
   </div>
-  <button class="btn btn-primary" type="submit" [disabled]="empForm.invalid">Add Employee</button>
-</form>
+</div>

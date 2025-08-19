@@ -1,0 +1,83 @@
+/* Wrapper */
+.form-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+  background: #f5f7fa;
+  font-family: "Inter", sans-serif;
+}
+
+/* Card */
+.form-card {
+  width: 600px;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Titles */
+h2.fw-bold {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 0.2rem;
+}
+
+p.text-muted {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+/* Inputs and Textarea */
+.form-control,
+textarea.form-control {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 10px 12px;
+  transition: all 0.2s ease;
+  background: #fafafa;
+  color: #111827;
+}
+
+.form-control:focus,
+textarea.form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.25);
+  outline: none;
+}
+
+/* Button */
+.btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+/* Validation messages */
+.text-danger {
+  font-size: 0.85rem;
+}
