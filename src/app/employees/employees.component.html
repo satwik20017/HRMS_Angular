@@ -8,7 +8,7 @@
     <div *ngIf="loading" class="text-center">Loading employees...</div>
     <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
-    <table *ngIf="!loading && employees.length > 0" class="table table-bordered table-hover shadow-sm">
+    <table *ngIf="!loading && employees.length > 0" class="table table-bordered table-hover shadow-sm" >
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
@@ -16,6 +16,10 @@
                 <th>Email</th>
                 <th>Department</th>
                 <th>Phone</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Nationality</th>
+                <th>Marital status</th>
                 <th>Joined On</th>
                 <th>Actions</th> 
             </tr>
@@ -27,6 +31,10 @@
                 <td>{{ emp.email }}</td>
                 <td>{{ emp.department }}</td>
                 <td>{{ emp.phone }}</td>
+                <td>{{ emp.gender }}</td>
+                <td>{{ emp.nationality }}</td>
+                <td>{{ emp.maritalstatus }}</td>
+                <td>{{ emp.bloodgroup }}</td>
                 <td>{{ emp.created_at | date:'short' }}</td>
                 <td class="text-center">
                     <!-- 3 Dots Dropdown -->
