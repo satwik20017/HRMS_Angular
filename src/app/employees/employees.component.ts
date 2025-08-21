@@ -5,6 +5,7 @@ import { HrmsService } from '../hrms.service';
 import { EmployeeService } from '../employee.service';
 import { Route, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { NotExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-employees',
@@ -35,6 +36,18 @@ export class EmployeesComponent implements OnInit {
 
   goToAddEmployee() {
     this.router.navigate(['/add-employee'])
+  }
+
+  deleteEmployee(id: number){
+    this.authService.deleteEmployee(id)
+    .subscribe({
+      next: () => {
+        this.employees = this.employees.filter((e: any) => e.id !== id)
+      },
+      error: (err) => {
+        console.log(`Error in deleting employee`, err);
+      }
+    })
   }
 
 }

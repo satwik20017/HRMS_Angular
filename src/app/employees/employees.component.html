@@ -11,7 +11,7 @@
     <table *ngIf="!loading && employees.length > 0" class="table table-bordered table-hover shadow-sm">
         <thead class="table-dark">
             <tr>
-                <th>#</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Department</th>
@@ -37,7 +37,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item">Update</a></li>
-                            <li><a class="dropdown-item text-danger">Delete</a></li>
+                            <li><a class="dropdown-item text-danger" (click)="deleteEmployee(emp.id)">Delete</a></li>
                         </ul>
                     </div>
                 </td>
