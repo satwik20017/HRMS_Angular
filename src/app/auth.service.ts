@@ -34,6 +34,10 @@ export class AuthService {
     return this.http.get<{ data: any[] }>(`${this.apiUrl}/employees`)
   }
 
+  getEmployeeById(id: number) {
+    return this.http.get(`${this.apiUrl}/employees/${id}`)
+  }
+
   deleteEmployee(id: any) {
     return this.http.delete<any>(`${this.apiUrl}/deleteEmployee/${id}`)
   }

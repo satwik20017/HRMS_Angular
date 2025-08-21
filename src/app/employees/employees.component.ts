@@ -38,16 +38,20 @@ export class EmployeesComponent implements OnInit {
     this.router.navigate(['/add-employee'])
   }
 
-  deleteEmployee(id: number){
+  deleteEmployee(id: number) {
     this.authService.deleteEmployee(id)
-    .subscribe({
-      next: () => {
-        this.employees = this.employees.filter((e: any) => e.id !== id)
-      },
-      error: (err) => {
-        console.log(`Error in deleting employee`, err);
-      }
-    })
+      .subscribe({
+        next: () => {
+          this.employees = this.employees.filter((e: any) => e.id !== id)
+        },
+        error: (err) => {
+          console.log(`Error in deleting employee`, err);
+        }
+      })
+  }
+
+  editEmployee(id: number) {
+    this.router.navigate(['/add-employee'], { queryParams: { id } });
   }
 
 }
