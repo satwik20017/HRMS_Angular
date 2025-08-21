@@ -1,0 +1,20 @@
+/* Prevent unwanted scrollbars on dashboard */
+:host {
+    display: block;
+    overflow: hidden;
+}
+
+.row {
+    margin: 0;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.col-md-4 {
+    padding: 10px;
+    min-width: 0;
+}
+
+body, html {
+    overflow: hidden;
+}
