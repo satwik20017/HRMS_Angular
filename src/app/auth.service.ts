@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   getAllEmployees() {
-    return this.http.get(`${this.apiUrl}/employees`)
+    return this.http.get<{data: any[]}>(`${this.apiUrl}/employees`)
   }
 
 }

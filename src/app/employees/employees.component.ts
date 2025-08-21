@@ -23,7 +23,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getAllEmployees().subscribe({
       next: (res) => {
-        this.employees = res;
+        this.employees = res.data;
         this.loading = false
       },
       error: (err) => {
