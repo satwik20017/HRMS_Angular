@@ -11,12 +11,13 @@
     <table *ngIf="!loading && employees.length > 0" class="table table-bordered table-hover shadow-sm">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Department</th>
                 <th>Phone</th>
                 <th>Joined On</th>
+                <th>Actions</th> 
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,19 @@
                 <td>{{ emp.department }}</td>
                 <td>{{ emp.phone }}</td>
                 <td>{{ emp.created_at | date:'short' }}</td>
+                <td class="text-center">
+                    <!-- 3 Dots Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-light" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            ⋮
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item">Update</a></li>
+                            <li><a class="dropdown-item text-danger">Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
