@@ -14,16 +14,24 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, credentials)
   }
 
+  logout() {
+    localStorage.removeItem('token'); // clear session
+  }
+
   register(data: { username: string, email: string, password: string }) {
     return this.http.post(`${this.apiUrl}/register`, data)
   }
 
-  forgotPassword(data: {email: string, otp: number, password: string}) {
+  forgotPassword(data: { email: string, otp: number, password: string }) {
     return this.http.post(`${this.apiUrl}/forgot-password`, data);
   }
 
-  logout() {
-    localStorage.removeItem('token'); // clear session
+  addEmployee(employeeData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add-employee`, employeeData);
   }
-  
+
+  getAllEmployees() {
+    return this.http.get(`${this.apiUrl}/employees`)
+  }
+
 }

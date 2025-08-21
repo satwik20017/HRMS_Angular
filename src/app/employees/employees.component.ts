@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HrmsService } from '../hrms.service';
 import { EmployeeService } from '../employee.service';
 import { Route, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-employees',
@@ -11,30 +12,26 @@ import { Route, Router } from '@angular/router';
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.css'
 })
-export class EmployeesComponent {
+export class EmployeesComponent implements OnInit {
 
-  constructor(private empService: EmployeeService, private router: Router, hrmsService: HrmsService) {
-    this.employees = this.empService.getEmployees();
+  constructor(private empService: EmployeeService, private router: Router, hrmsService: HrmsService, private authService: AuthService) {
   }
+  employees: any = [];
+  loading = true;
+  error: string | null = null;
 
-
-  employees: any[] = [];
-  newEmployee = { name: '', role: '', status: '' }
-
-  showDetails: boolean = false;
-
-  // ngOnInit() {
-  //   this.employees = this.hrmsService.getEmployees();
-  // }
-
-  // addEmployee(form: any) {
-  //   if (form.valid) {
-  //     const newId = this.employees.length + 1;
-  //     this.hrmsService.addEmployee({ id: newId, ...this.newEmployee });
-  //     this.newEmployee = { name: '', role: '', status: '' }; // reset form
-  //     form.reset();
-  //   }
-  // }
+  ngOnInit(): void {
+    this.authService.getAllEmployees().subscribe({
+      next: (res) => {
+        this.employees = res;
+        this.loading = false
+      },
+      error: (err) => {
+        this.error = `Failed to load employees`;
+        this.loading = false;
+      }
+    });
+  }
 
   goToAddEmployee() {
     this.router.navigate(['/add-employee'])

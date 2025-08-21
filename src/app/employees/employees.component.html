@@ -1,37 +1,37 @@
-<h2>Employees</h2>
-<button class="btn btn-success mb-3" (click)="goToAddEmployee()">Add Employee</button>
+<div class="container mt-4">
 
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let emp of employees">
-            <td>{{ emp.id }}</td>
-            <td>{{ emp.name }}</td>
-            <td>{{ emp.role }}</td>
-            <td>
-                <span [ngSwitch]="emp.status">
-                    <span *ngSwitchCase="'Active'" class="badge bg-success">Active</span>
-                    <span *ngSwitchCase="'On Leave'" class="badge bg-warning text-dark">On Leave</span>
-                    <span *ngSwitchCase="'Resigned'" class="badge bg-danger">Resigned</span>
-                    <span *ngSwitchDefault class="badge bg-secondary">Unknown</span>
-                </span>
-            </td>
-            <td>
-                <button class="btn btn-sm btn-primary" (click)="showDetails = !showDetails">
-                    Toggle Details
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div *ngIf="showDetails" class="alert alert-info mt-3">
-    <strong>Extra Info:</strong> This is some additional employee details.
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold mb-0">Employees</h2>
+        <button class="btn btn-success" (click)="goToAddEmployee()">Add Employee</button>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Loading employees...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <table *ngIf="!loading && employees.length > 0" class="table table-bordered table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Phone</th>
+                <th>Joined On</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ emp.name }}</td>
+                <td>{{ emp.email }}</td>
+                <td>{{ emp.department }}</td>
+                <td>{{ emp.phone }}</td>
+                <td>{{ emp.created_at | date:'short' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!loading && employees.length === 0" class="alert alert-info">
+        No employees found.
+    </div>
 </div>
