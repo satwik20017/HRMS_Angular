@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -15,18 +15,22 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'HRMS_Angular';
 
-  showNavbar: any = 'true';
+  showNavbar: boolean = false;
 
   constructor(private router: Router) {
+  }
+
+  ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const hideNavbarRoutes = ['/login', '/register', '/forgot-password'];
-        this.showNavbar = !hideNavbarRoutes.includes(event.url);
+        this.showNavbar = !hideNavbarRoutes.includes(event.urlAfterRedirects);
       }
     });
   }
+
 
 }
