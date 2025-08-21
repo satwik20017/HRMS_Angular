@@ -15,8 +15,9 @@ export class AddemployeeComponent implements OnInit {
   employeeForm!: FormGroup;
   successMessage: string | null = null;
   selectedEmployee: any;
-
+  buttonLabel: string = `Add Employee`;
   employeeId: number | null = null;
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class AddemployeeComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params['id']) {
         this.employeeId = +params['id'];
+        this.buttonLabel = `Update Employee`;
         this.authService.getEmployeeById(this.employeeId).subscribe(
           (emp: any) => {
             if (emp && emp.data) {
@@ -55,19 +57,33 @@ export class AddemployeeComponent implements OnInit {
       return;
     }
 
-    console.log('✅ Employee Data:', this.employeeForm.value);
-    this.authService.addEmployee(this.employeeForm.value).subscribe({
-      next: (res) => {
-        console.log('Employee added successfully!', res);
-        this.successMessage = 'Employee added successfully';
-        this.animationKey++;
-        this.employeeForm.reset();
-        setTimeout(() => (this.successMessage = null), 3000);
-      },
-      error: (err) => {
-        console.error('Failed to add employee:', err);
-      }
-    });
+    if (this.employeeId) {
+      // Update employee
+      this.authService.updateEmployee(this.employeeId, this.employeeForm.value).subscribe({
+        next: (res: any) => {
+          this.successMessage = 'Employee updated successfully';
+          this.animationKey++;
+          setTimeout(() => (this.successMessage = 'Redirecting to Employees...'), 2000);
+          setTimeout(() => this.router.navigate(['/employees']), 3000)
+        },
+        error: (err: any) => {
+          console.error('Failed to update employee:', err);
+        }
+      });
+    } else {
+      // Add employee
+      this.authService.addEmployee(this.employeeForm.value).subscribe({
+        next: (res) => {
+          this.successMessage = 'Employee added successfully';
+          this.animationKey++;
+          this.employeeForm.reset();
+          setTimeout(() => (this.successMessage = null), 3000);
+        },
+        error: (err) => {
+          console.error('Failed to add employee:', err);
+        }
+      });
+    }
   }
 
 

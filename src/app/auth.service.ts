@@ -42,4 +42,8 @@ export class AuthService {
     return this.http.delete<any>(`${this.apiUrl}/deleteEmployee/${id}`)
   }
 
+  updateEmployee(id: number, employeeData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/updateEmployee/${id}`, employeeData);
+  }
+
 }
