@@ -1,61 +1,120 @@
-<div class="d-flex justify-content-center align-items-center mt-4">
-  <div class="card shadow-sm p-4 rounded form-card" [ngClass]="{'success-animate': successMessage}"
+<div class="d-flex justify-content-center align-items-center mt-5 form-wrapper">
+  <div class="card shadow-sm p-5 rounded form-card" [ngClass]="{'success-animate': successMessage}"
     [attr.data-key]="animationKey">
 
-    <h3 class="fw-bold mb-4 text-center">Add Employee</h3>
-    <hr />
+    <!-- Header -->
+    <div class="form-header text-center mb-4">
+      <h2 class="fw-bold">Add New Employee</h2>
+      <p class="text-muted mb-0">Fill in the details below to add an employee to the system</p>
+    </div>
 
-    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-      <div class="row g-3">
+    <!-- Form -->
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="row g-4">
 
-        <!-- Name -->
-        <div class="col-md-4">
-          <label class="form-label">Name</label>
-          <input type="text" class="form-control" formControlName="name" />
-          <small *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
-            Name is required
-          </small>
-        </div>
-
-        <!-- Email -->
-        <div class="col-md-4">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" formControlName="email" />
-          <small *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
-            Valid email is required
-          </small>
-        </div>
-
-        <!-- Department -->
-        <div class="col-md-4">
-          <label class="form-label">Department</label>
-          <input type="text" class="form-control" formControlName="department" />
-          <small *ngIf="f['department'].touched && f['department'].invalid" class="text-danger">
-            Department is required
-          </small>
-        </div>
-
-        <!-- Phone -->
-        <div class="col-md-4">
-          <label class="form-label">Phone</label>
-          <input type="text" class="form-control" formControlName="phone" />
-          <small *ngIf="f['phone'].touched && f['phone'].invalid" class="text-danger">
-            Phone must be 10 digits
-          </small>
-        </div>
+      <!-- Name -->
+      <div class="col-md-6">
+        <label class="form-label">Full Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="name" placeholder="e.g. John Doe" />
+        <small *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
+          Name is required
+        </small>
       </div>
 
-      <!-- Submit Button -->
-      <div class="mt-4">
-        <button class="btn btn-primary w-100" type="submit" [disabled]="employeeForm.invalid">
+      <!-- Email -->
+      <div class="col-md-6">
+        <label class="form-label">Email <span class="text-danger">*</span></label>
+        <input type="email" class="form-control" formControlName="email" placeholder="e.g. john@example.com" />
+        <small *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+          Valid email is required
+        </small>
+      </div>
+
+
+      <!-- Gender Dropdown -->
+      <div class="col-md-6">
+        <label class="form-label">Gender <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="gender">
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <small *ngIf="f['gender'].touched && f['gender'].invalid" class="text-danger">
+          Select a Gender
+        </small>
+      </div>
+
+      <!-- BloodGroup Dropdown -->
+      <div class="col-md-6">
+        <label class="form-label">Blood Group <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="bloodgroup">
+          <option value="" disabled selected>Select bloodgroup</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+        <small *ngIf="f['bloodgroup'].touched && f['bloodgroup'].invalid" class="text-danger">
+          Select Blood Group
+        </small>
+      </div>
+
+      <!-- Department -->
+      <div class="col-md-6">
+        <label class="form-label">Department <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="department" placeholder="e.g. Human Resources" />
+        <small *ngIf="f['department'].touched && f['department'].invalid" class="text-danger">
+          Department is required
+        </small>
+      </div>
+
+      <!-- Phone -->
+      <div class="col-md-6">
+        <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="phone" placeholder="10-digit phone number" />
+        <small *ngIf="f['phone'].touched && f['phone'].invalid" class="text-danger">
+          Phone must be 10 digits
+        </small>
+      </div>
+
+
+      <!-- Nationality -->
+      <div class="col-md-6">
+        <label class="form-label">Nationality <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" formControlName="Nationality" placeholder="Nationality" />
+        <small *ngIf="f['nationality'].touched && f['nationality'].invalid" class="text-danger">
+          Select Nationality
+        </small>
+      </div>
+
+
+      <!-- Marital Status Dropdown -->
+      <div class="col-md-6">
+        <label class="form-label">Marital Status <span class="text-danger">*</span></label>
+        <select class="form-select" formControlName="maritalstatus">
+          <option value="" disabled selected>Select Marital Status</option>
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+          <option value="Divorced">Divorced</option>
+          <option value="Widowed">Widowed</option>
+        </select>
+        <small *ngIf="f['maritalstatus'].touched && f['maritalstatus'].invalid" class="text-danger">
+          Enter Marital Status
+        </small>
+      </div>
+
+
+      <!-- Submit -->
+      <div class="col-12 mt-3">
+        <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="employeeForm.invalid">
           {{buttonLabel}}
         </button>
       </div>
     </form>
 
-    <!-- Success Text -->
-    <div *ngIf="successMessage" class="success-text text-center mt-3 fw-semibold">
-      {{ successMessage }}
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-text text-center mt-4 fw-semibold">
+      <i class="bi bi-check-circle-fill me-2"></i> {{ successMessage }}
     </div>
   </div>
 </div>
