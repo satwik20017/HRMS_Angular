@@ -24,8 +24,12 @@ export class AddemployeeComponent implements OnInit {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      gender: ['', Validators.required],
+      bloodgroup: ['', Validators.required],
       department: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]]
+      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      nationality: ['', Validators.required],
+      maritalstatus: ['', Validators.required]
     })
 
     this.route.queryParams.subscribe(params => {
@@ -41,14 +45,16 @@ export class AddemployeeComponent implements OnInit {
         )
       }
     })
-
-
   }
 
   get f() {
     return this.employeeForm.controls;
   }
 
+  onPhoneInput(event: any) {
+    const input = event.target.value.replace(/\D/g, '').slice(0, 10);
+    this.employeeForm.get('phone')?.setValue(input, { emitEvent: false });
+  }
   animationKey = 0;
 
   onSubmit() {

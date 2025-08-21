@@ -71,7 +71,8 @@
       <!-- Phone -->
       <div class="col-md-6">
         <label class="form-label">Phone Number <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" formControlName="phone" placeholder="10-digit phone number" />
+        <input type="text" class="form-control" formControlName="phone" placeholder="10-digit phone number"
+          maxlength="10" inputmode="numeric" pattern="[0-9]*" (input)="onPhoneInput($event)" />
         <small *ngIf="f['phone'].touched && f['phone'].invalid" class="text-danger">
           Phone must be 10 digits
         </small>
@@ -81,7 +82,7 @@
       <!-- Nationality -->
       <div class="col-md-6">
         <label class="form-label">Nationality <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" formControlName="Nationality" placeholder="Nationality" />
+        <input type="text" class="form-control" formControlName="nationality" placeholder="Nationality" />
         <small *ngIf="f['nationality'].touched && f['nationality'].invalid" class="text-danger">
           Select Nationality
         </small>
